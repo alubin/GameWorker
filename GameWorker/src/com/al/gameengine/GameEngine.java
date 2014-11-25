@@ -100,4 +100,14 @@ public class GameEngine extends Thread
 	}
     }
 
+    public boolean isRunning()
+    {
+        return running;
+    }
+
+    public void setRunning(boolean running)
+    {
+        this.running = running;
+    }
+
 }
