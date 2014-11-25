@@ -74,6 +74,17 @@ public class GameView extends SurfaceView implements Callback
 	// TODO Auto-generated method stub
 	
     }
+    
+    public void update()
+    {
+	background.update();
+	vanSprite.update();
+    }
+    
+    public void render(Canvas canvas)
+    {
+	
+    }
 
 
 }
