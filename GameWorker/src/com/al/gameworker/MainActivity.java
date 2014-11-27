@@ -10,6 +10,11 @@ import android.view.WindowManager;
 
 import com.al.gameengine.sprite.GameView;
 
+/**
+ * Launcher Activity to call for the game.
+ * @author AL
+ *
+ */
 public class MainActivity extends Activity
 {
 

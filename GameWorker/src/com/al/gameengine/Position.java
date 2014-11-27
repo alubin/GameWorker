@@ -1,8 +1,15 @@
 package com.al.gameengine;
 
+/**
+ * Class that holds the position value for each sprite.
+ * @author AL
+ *
+ */
 public class Position
 {
+    //The X variable of the position.
     private int x;
+    //The Y variable of the position.
     private int y;
     
     public Position()

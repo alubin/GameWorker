@@ -6,6 +6,11 @@ import android.view.SurfaceHolder;
 
 import com.al.gameengine.sprite.GameView;
 
+/**
+ * Game Loop for the game view, this will update the position of the images in the view.
+ * @author AL
+ *
+ */
 public class GameEngine extends Thread
 {
 
@@ -36,22 +41,30 @@ public class GameEngine extends Thread
     public GameEngine(SurfaceHolder surfaceHolder, GameView gamePanel)
     {
 	super();
+	//Lock for the canvas.
 	this.surfaceHolder = surfaceHolder;
+	//Pointer to the game view, where the images will be displayed.
 	this.gamePanel = gamePanel;
     }
 
     @Override
     public void run() {
+	//Pointer to the canvas where things will be displayed.
 	Canvas canvas;
 	Log.d(TAG, "Starting game loop");
 
-	long beginTime;		// the time when the cycle begun
-	long timeDiff;		// the time it took for the cycle to execute
-	int sleepTime;		// ms to sleep (<0 if we're behind)
-	int framesSkipped;	// number of frames being skipped 
+	// the time when the cycle begun
+	long beginTime;
+	// the time it took for the cycle to execute
+	long timeDiff;
+	// ms to sleep (<0 if we're behind)
+	int sleepTime;
+	// number of frames being skipped 
+	int framesSkipped;
 
 	sleepTime = 0;
 
+	//Loops the game if the running flag is true.
 	while (running) {
 	    canvas = null;
 	    // try locking the canvas for exclusive pixel editing
@@ -105,6 +118,10 @@ public class GameEngine extends Thread
         return running;
     }
 
+    /**
+     * Sets the running state of the engine.
+     * @param running
+     */
     public void setRunning(boolean running)
     {
         this.running = running;

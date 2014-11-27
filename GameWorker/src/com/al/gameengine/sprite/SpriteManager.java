@@ -31,4 +31,9 @@ public class SpriteManager
 	}
     }
     
+    public static void addSprite(Sprite sprite)
+    {
+	spriteList.add(sprite);
+    }
+    
 }

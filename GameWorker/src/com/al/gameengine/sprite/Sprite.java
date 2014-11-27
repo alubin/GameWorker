@@ -32,6 +32,12 @@ public class Sprite
 	
     }
     
+    public Sprite(int initialX, int initialY, Bitmap bitmap)
+    {
+	this(initialX, initialY);
+	mainImage = bitmap;
+    }
+    
     public void update()
     {
 	

@@ -5,6 +5,11 @@ import java.util.LinkedList;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+/**
+ * This class will be used for the back display of each view.
+ * @author AL
+ *
+ */
 public class Scene
 {
     LinkedList<Bitmap> imgList;
