@@ -27,6 +27,8 @@ public class GameView extends SurfaceView implements Callback
     private Background background;
     //Objects to be displayed in the game, in front of the background.
     private Sprite vanSprite;
+    
+    private SpriteManager spriteMan;
 
     public GameView(Context context)
     {
@@ -35,7 +37,9 @@ public class GameView extends SurfaceView implements Callback
 	vanSprite = new Sprite(0,0,BitmapFactory.decodeResource(getResources(), R.drawable.inflating1));
 	background = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.emptystreet));
 	
-	SpriteManager.addSprite(vanSprite);
+	spriteMan = new SpriteManager();
+	
+	spriteMan.addSprite(vanSprite);
 
 	// adding the callback (this) to the surface holder to intercept events
 	getHolder().addCallback(this);

@@ -15,7 +15,7 @@ public class SpriteManager
 	spriteList = new LinkedList<Sprite>();
     }
     
-    public static void update()
+    public void update()
     {
 	for(Sprite spriteItem: spriteList)
 	{
@@ -23,7 +23,7 @@ public class SpriteManager
 	}
     }
     
-    public static void draw(Canvas canvas)
+    public void draw(Canvas canvas)
     {
 	for(Sprite spriteItem: spriteList)
 	{
@@ -31,7 +31,7 @@ public class SpriteManager
 	}
     }
     
-    public static void addSprite(Sprite sprite)
+    public void addSprite(Sprite sprite)
     {
 	spriteList.add(sprite);
     }
