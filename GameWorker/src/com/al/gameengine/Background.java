@@ -19,8 +19,4 @@ public class Background extends Scene
 	add(image);
     }
     
-//    public void update()
-//    {
-//	
-//    }
 }

@@ -53,7 +53,7 @@ public class Sprite
     {
 	if(canvas != null)
 	{
-	    canvas.drawBitmap(mainImage, pos.getX() - (mainImage.getWidth() / 2), pos.getY() - (mainImage.getHeight() / 2), null);
+	    canvas.drawBitmap(mainImage, pos.getX(), pos.getY(), null);
 	}
     }
     

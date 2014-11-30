@@ -1,16 +1,21 @@
 package com.al.gameengine.sprite;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Point;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import android.view.WindowManager;
 
 import com.al.gameengine.Background;
 import com.al.gameengine.GameEngine;
+import com.al.gameengine.Position;
 import com.al.gameworker.R;
 
 /**
@@ -33,10 +38,21 @@ public class GameView extends SurfaceView implements Callback
     public GameView(Context context)
     {
 	super(context);
-	//Sprite to be added to the SpriteManager
-	vanSprite = new Sprite(0,0,BitmapFactory.decodeResource(getResources(), R.drawable.inflating1));
-	background = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.emptystreet));
+	WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+	Display display = wm.getDefaultDisplay();
+	Point size = new Point();
+	display.getSize(size);
 	
+	Bitmap backImage = BitmapFactory.decodeResource(getResources(), R.drawable.emptystreet);
+	Bitmap vanImage = BitmapFactory.decodeResource(getResources(), R.drawable.inflating1);
+	//Sprite to be added to the SpriteManager
+	background = new Background(backImage);
+	vanSprite = new Sprite(0,0,vanImage);
+	
+//	Log.d(TAG, "Background height = " + (float)size.y / backImage.getHeight());
+//	Log.d(TAG, "Screen Size is : " + size.y);
+	
+	vanSprite.setPosition(new Position(0 , size.y - vanImage.getHeight()));
 	spriteMan = new SpriteManager();
 	
 	spriteMan.addSprite(vanSprite);
@@ -60,11 +76,9 @@ public class GameView extends SurfaceView implements Callback
     @Override
     protected void onDraw(Canvas canvas)
     {
-	Log.d(TAG, "Entered On Draw");
 	super.onDraw(canvas);
 	background.render(canvas);
-//	SpriteManager.draw(canvas);
-	Log.d(TAG, "Exiting On Draw");
+	spriteMan.render(canvas);
     }
 
     public void setSprite(Sprite sprite)

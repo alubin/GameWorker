@@ -23,7 +23,7 @@ public class SpriteManager
 	}
     }
     
-    public void draw(Canvas canvas)
+    public void render(Canvas canvas)
     {
 	for(Sprite spriteItem: spriteList)
 	{
