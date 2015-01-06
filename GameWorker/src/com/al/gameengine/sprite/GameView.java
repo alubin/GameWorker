@@ -32,7 +32,7 @@ public class GameView extends SurfaceView implements Callback
     private Background background;
     //Objects to be displayed in the game, in front of the background.
     private Sprite vanSprite;
-    
+
     private SpriteManager spriteMan;
 
     public GameView(Context context)
@@ -42,19 +42,21 @@ public class GameView extends SurfaceView implements Callback
 	Display display = wm.getDefaultDisplay();
 	Point size = new Point();
 	display.getSize(size);
-	
+
+	//The background that will be used for the game view
 	Bitmap backImage = BitmapFactory.decodeResource(getResources(), R.drawable.emptystreet);
+
+	//The Sprites that are rendered onto to the view in front of the background.
 	Bitmap vanImage = BitmapFactory.decodeResource(getResources(), R.drawable.inflating1);
-	//Sprite to be added to the SpriteManager
-	background = new Background(backImage);
+	//Sprite to be added to the SpriteManager.
+	setBackground(backImage);
 	vanSprite = new Sprite(0,0,vanImage);
-	
-//	Log.d(TAG, "Background height = " + (float)size.y / backImage.getHeight());
-//	Log.d(TAG, "Screen Size is : " + size.y);
-	
+
+
 	vanSprite.setPosition(new Position(0 , size.y - vanImage.getHeight()));
 	spriteMan = new SpriteManager();
-	
+
+	//As sprites are added, it will be on the next layer.
 	spriteMan.addSprite(vanSprite);
 
 	// adding the callback (this) to the surface holder to intercept events
@@ -67,12 +69,20 @@ public class GameView extends SurfaceView implements Callback
 	setFocusable(true);
     }
 
+    /**
+     * Implement the touch functionality of the view. 
+     */
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
 	return super.onTouchEvent(event);
     }
 
+    /*
+     * (non-Javadoc)
+     * @see android.view.View#onDraw(android.graphics.Canvas)
+     * When the view is drawn the game objects are rendered onto the screen.
+     */
     @Override
     protected void onDraw(Canvas canvas)
     {
@@ -83,7 +93,7 @@ public class GameView extends SurfaceView implements Callback
 
     public void setSprite(Sprite sprite)
     {
-//	vanSprite = sprite;
+	//	vanSprite = sprite;
     }
 
     @Override
@@ -129,7 +139,8 @@ public class GameView extends SurfaceView implements Callback
     public void update()
     {
 	//	background.update();
-//	vanSprite.update();
+	//	vanSprite.update();
+	//	spriteMan.update();
     }
 
     /**
@@ -139,6 +150,15 @@ public class GameView extends SurfaceView implements Callback
     public void render(Canvas canvas)
     {
 	this.onDraw(canvas);
+    }
+
+    /**
+     * This function sets the background that will be used for the view.
+     * @param backgroundImage
+     */
+    private void setBackground(Bitmap backgroundImage)
+    {
+	background = new Background(backgroundImage);
     }
 
 
